@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#eaf7ee">
+  <meta name="description"
+        content="Calculate an estimated healthy weight range based on your height and age.">
+
+  <title>Healthy Weight Calculator</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app-container">
+
+    <header class="app-header">
+      <div class="app-icon" aria-hidden="true">⚖️</div>
+      <p class="eyebrow">YOUR PERSONAL WELLNESS TOOL</p>
+      <h1>Healthy Weight <span>Calculator</span></h1>
+      <p class="subtitle">
+        Understand your estimated healthy weight range with a few simple details.
+      </p>
+    </header>
+
+    <section class="calculator-card" aria-labelledby="form-title">
+      <h2 id="form-title">Your details</h2>
+      <p class="section-description">
+        Enter your information below to get an estimate.
+      </p>
+
+      <form id="weightForm" novalidate>
+
+        <fieldset class="gender-field">
+          <legend>Gender</legend>
+
+          <div class="gender-options">
+            <label class="gender-option">
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked
+              >
+              <span class="gender-content">
+                <span class="gender-icon" aria-hidden="true">♂</span>
+                <span>Male</span>
+              </span>
+            </label>
+
+            <label class="gender-option">
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+              >
+              <span class="gender-content">
+                <span class="gender-icon" aria-hidden="true">♀</span>
+                <span>Female</span>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="input-group">
+          <label for="age">Age</label>
+          <div class="input-with-unit">
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="Enter your age"
+              min="2"
+              max="120"
+              step="1"
+              inputmode="numeric"
+              required
+            >
+            <span class="unit">years</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="height">Height</label>
+          <div class="input-with-unit">
+            <input
+              type="number"
+              id="height"
+              name="height"
+              placeholder="Enter your height"
+              min="50"
+              max="250"
+              step="0.1"
+              inputmode="decimal"
+              required
+            >
+            <span class="unit">cm</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="weight">Current weight</label>
+          <div class="input-with-unit">
+            <input
+              type="number"
+              id="weight"
+              name="weight"
+              placeholder="Enter your weight"
+              min="2"
+              max="500"
+              step="0.1"
+              inputmode="decimal"
+              required
+            >
+            <span class="unit">kg</span>
+          </div>
+        </div>
+
+        <p id="errorMessage" class="error-message"
+           role="alert" hidden></p>
+
+        <div class="button-group">
+          <button type="submit" class="calculate-btn">
+            Calculate My Results
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <button type="reset" class="reset-btn">
+            Reset
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section
+      id="results"
+      class="results-card"
+      aria-labelledby="results-title"
+      aria-live="polite"
+      hidden
+    >
+      <div class="results-heading">
+        <span class="result-check" aria-hidden="true">✓</span>
+        <div>
+          <p class="eyebrow">YOUR RESULTS</p>
+          <h2 id="results-title">Your weight estimate</h2>
+        </div>
+      </div>
+
+      <div id="adultResults" hidden>
+        <div class="bmi-panel">
+          <p class="result-label">Your BMI</p>
+          <p id="bmiValue" class="bmi-value">--</p>
+          <p id="bmiCategory" class="bmi-category"></p>
+        </div>
+
+        <div class="healthy-range">
+          <p class="result-label">Estimated healthy weight range</p>
+          <p class="range-value">
+            <span id="minWeight">--</span>
+            <span class="range-dash">–</span>
+            <span id="maxWeight">--</span>
+            <span class="range-unit">kg</span>
+          </p>
+          <p class="result-note">
+            Based on an adult BMI range of 18.5–24.9.
+          </p>
+        </div>
+
+        <div class="comparison-panel">
+          <p class="result-label">Your current weight</p>
+          <p id="comparisonText" class="comparison-text"></p>
+        </div>
+      </div>
+
+      <div id="youngResults" hidden>
+        <div class="age-notice">
+          <span aria-hidden="true">🌱</span>
+          <h3>Your body is still growing</h3>
+          <p id="youngMessage"></p>
+        </div>
+      </div>
+
+      <p class="medical-disclaimer">
+        <strong>Please remember:</strong> This is an estimate, not a
+        medical diagnosis. Healthy weight can vary with growth, body
+        composition and other factors. Consult a qualified healthcare
+        professional for personalised advice.
+      </p>
+    </section>
+
+    <footer class="app-footer">
+      <span aria-hidden="true">💚</span>
+      Your health matters more than a number.
+    </footer>
+
+  </main>
+</body>
+</html>
